@@ -4,21 +4,24 @@ from analytix import Client
 # Let's enable the logger so we can see what's going on.
 analytix.enable_logging()
 
+print('aaa')
 
-client = Client("client_secret_898467674662-a1b5vidubbadgt1om1cic23mho33ngok.apps.googleusercontent.com.json")
-with Client("client_secret_898467674662-a1b5vidubbadgt1om1cic23mho33ngok.apps.googleusercontent.com.json") as client:
+client = Client("credentials.json")
+with Client("credentials.json") as client:
     report = client.retrieve_report(
         dimensions=("video", "day"),
         max_results=200,
-        sort_options=("-views",),
+        sort_options=("-views"),
         metrics=("views", "likes", "comments"),
     )
+    print('chegou aqui')
     
 # report = client.retrieve_report(
 #     dimensions=("day",),
 #     filters={"country": "US"},
 #     metrics=("views", "l ikes", "comments"),
-# ) 
+# )
+print('chegou aqui')
 report.to_csv("./analytics.csv")
 
 
